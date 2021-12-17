@@ -19,10 +19,11 @@ builder.Services.AddSwaggerGen();
 builder.Services
     .AddOcelot(builder.Configuration)
     .AddConsul()
-    .AddCacheManager(x =>
-    {
-        x.WithDictionaryHandle();
-    })
+    .AddConfigStoredInConsul()
+    //.AddCacheManager(x =>
+    //{
+    //    x.WithDictionaryHandle();
+    //})
     .AddPolly();
 
 var app = builder.Build();

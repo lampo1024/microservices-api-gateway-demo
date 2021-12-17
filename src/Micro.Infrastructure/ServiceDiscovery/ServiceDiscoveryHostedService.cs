@@ -24,13 +24,13 @@ namespace Micro.Infrastructure.ServiceDiscovery
                 Name = _config.Name,
                 Address = _config.Address,
                 Port = _config.Port,
-                //Check = new AgentServiceCheck()
-                //{
-                //    DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),
-                //    Interval = TimeSpan.FromSeconds(15),
-                //    HTTP = $"http://{_config.Address}:{_config.Port}{_config.HealthCheckEndPoint}",
-                //    Timeout = TimeSpan.FromSeconds(5)
-                //}
+                Check = new AgentServiceCheck()
+                {
+                    DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),
+                    Interval = TimeSpan.FromSeconds(10),
+                    HTTP = $"http://{_config.Address}:{_config.Port}{_config.HealthCheckEndPoint}",
+                    Timeout = TimeSpan.FromSeconds(5)
+                }
             };
 
             // Deregister already registered service

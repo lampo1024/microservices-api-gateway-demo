@@ -1,10 +1,24 @@
 {
   "Routes": [
     {
-      "Servicename": "OrderService",
+      "ServiceName": "OrderService",
       "DownstreamPathTemplate": "/api/{url}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/api/orders/{url}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "UseServiceDiscovery": true,
+      "RouteIsCaseSensitive": false,
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 5000,
+        "TimeoutValue": 2000
+      }
+    },
+    {
+      "ServiceName": "CategoryService",
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/category/{url}",
       "UpstreamHttpMethod": [ "GET" ],
       "UseServiceDiscovery": true,
       "RouteIsCaseSensitive": false,
@@ -19,10 +33,10 @@
     "RequestIdKey": "OcRequestId",
     "UseServiceDiscovery": true,
     "ServiceDiscoveryProvider": {
-      "Host": "192.168.7.92",
+      "Host": "localhost",
       "Port": 8500,
       "Type": "PollConsul",
-      "PollingInterval": 100
+      "PollingInterval": 12000
     }
   }
 }
