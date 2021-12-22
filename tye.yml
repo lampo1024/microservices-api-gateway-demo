@@ -1,0 +1,17 @@
+name: MICROSERVICES-API-GATEWAY-DEMO
+services:
+- name: ma-gateway
+  project: src/Micro.ApiGateway/Micro.ApiGateway.csproj
+  bindings:
+  - port: 7000
+  env:
+    - name: ASPNETCORE_ENVIRONMENT
+      value: development
+
+- name: ma-order
+  project: src/Micro.Services.Orders/Micro.Services.Orders.csproj
+  bindings:
+  - port: 7001
+  env:
+    - name: ASPNETCORE_ENVIRONMENT
+      value: development

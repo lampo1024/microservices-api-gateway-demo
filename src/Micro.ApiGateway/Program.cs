@@ -1,4 +1,3 @@
-using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
@@ -28,7 +27,7 @@ builder.Services
 
 var app = builder.Build();
 app.UseOcelot().Wait();
-
+app.MapGet("/", () => "Hello from api gateway.");
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
